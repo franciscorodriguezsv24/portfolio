@@ -1,0 +1,71 @@
+:root{
+    --main-bg-color: #151E3F;
+    --second-bg-color: #3590F3;
+    --third-bg-color: #726E60;
+    --forth-bg-color: #FDFFFC ;
+    --font-family:'Sono', sans-serif;
+    --font-family-icons:'Montserrat', sans-serif;
+    --fifth-bg-color: #A9CEF4;
+}
+
+.bg-main{
+    background-color: var(--main-bg-color);
+}
+
+.text-main{
+    color: var(--forth-bg-color);
+
+}
+
+.bg-forth{
+    background-color: var(--forth-bg-color);
+}
+.bg-second{
+    background-color: var(--second-bg-color);
+}
+
+.bg-third{
+background-color: var(--third-bg-color)
+}
+
+.bg-fifth{
+    background-color: var(--fifth-bg-color);
+}
+.font-f-main{
+font-family: var(--font-family);
+}
+
+.font-f-icon{
+    font-family: var(--font-family-icons);
+}
+
+.profile-image{
+    width: 30vmax;
+    height: 30vmax;
+}
+
+.title{
+    font-family: 'Sono', sans-serif;
+    font-size: 2rem;
+}
+
+.title1{
+    font-family: 'Sono', sans-serif;
+    font-size: 2rem;
+    display: block;
+    white-space: nowrap;
+    border-right: 2px solid;
+    width: 16ch;
+    text-align: center;
+
+    animation: typing 2s steps(12), blink .5s infinite step-end alternate;
+    overflow: hidden;
+}
+
+@keyframes typing {
+    from {width: 15px;}
+}
+@keyframes blink{
+    50% {border-color: transparent;}
+}
+
