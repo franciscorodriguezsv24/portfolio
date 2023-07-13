@@ -1,0 +1,44 @@
+name: 'Deploy portfolio'
+
+# **What it does**: Sync the repository contents into the S3 bucket
+# **Why we have it**: To update the personal website http://franrodriguez.click/
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+# This allows a subsequently queued workflow run to interrupt previous runs
+concurrency:
+  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+  cancel-in-progress: true
+
+env:
+    AWS_DEFAULT_REGION: us-east-1
+    S3_BUCKET_NAME: franrodriguez.click
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_DEFAULT_REGION }}
+      - name: Remove private files      
+        run: |
+            rm -rf .github
+            rm -rf .git
+            ls -lar
+      - name: list S3 bucket files
+        run: aws s3 ls s3://${{ env.S3_BUCKET_NAME }}
+      - name: Synchronize files
+        run: aws s3 sync . s3://${{ env.S3_BUCKET_NAME }}
+      - name: list S3 bucket files check
+        run: aws s3 ls s3://${{ env.S3_BUCKET_NAME }}
