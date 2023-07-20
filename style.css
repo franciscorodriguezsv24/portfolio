@@ -69,3 +69,19 @@ font-family: var(--font-family);
     50% {border-color: transparent;}
 }
 
+.life{
+    position: relative;
+    animation: mymove 1.0s alternate infinite ;
+}
+
+#logo1 {animation-timing-function: linear;}
+#logo2 {animation-timing-function: ease;}
+#logo3 {animation-timing-function: linear;}
+#logo4 {animation-timing-function: ease;}
+#logo5 {animation-timing-function: ease-in-out;}
+
+
+@keyframes mymove {
+    from {bottom: 0px;}
+    to {bottom: 25px;}
+  }
