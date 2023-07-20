@@ -108,3 +108,11 @@ font-family: var(--font-family);
       align-items: center;
     }
   }
+
+  div.row{
+    margin-right: 0px;
+ }
+ 
+ div.container-fluid{
+    padding-right: 0px;
+ }
